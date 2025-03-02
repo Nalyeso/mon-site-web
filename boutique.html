@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Boutique - Day&Night</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body class="is-preload">
+    <div id="page-wrapper">
+        
+        <!-- Header -->
+        <section id="header" class="wrapper">
+            <div id="logo">
+                <h1><a href="index.html">Day&Night</a></h1>
+                <p>Un jeu pour tout type de communauté</p>
+            </div>
+            <nav id="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="boutique.html" class="current">Boutique</a></li>
+                    <li><a href="ressources.html">Ressources</a></li>
+                </ul>
+            </nav>
+        </section>
+        
+        <!-- Boutique -->
+        <section id="main" class="wrapper style2">
+            <div class="title">Boutique</div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-8 col-12-medium">
+                        <div class="row">
+                            <div class="col-6 col-12-small">
+                                <section class="box">
+                                    <a href="#" class="image featured"><img src="images/skin1.jpg" alt="Skin 1" /></a>
+                                    <h3>Skin Élite</h3>
+                                    <p>Un skin exclusif pour votre personnage.</p>
+                                    <p><strong>Prix : 9.99€</strong></p>
+                                    <ul class="actions">
+                                        <li><a href="#" class="button style1 add-to-cart" data-name="Skin Élite" data-price="9.99">Ajouter au panier</a></li>
+                                    </ul>
+                                </section>
+                            </div>
+                            <div class="col-6 col-12-small">
+                                <section class="box">
+                                    <a href="#" class="image featured"><img src="images/arme1.jpg" alt="Arme 1" /></a>
+                                    <h3>Fusil Légendaire</h3>
+                                    <p>Une arme puissante pour dominer le champ de bataille.</p>
+                                    <p><strong>Prix : 14.99€</strong></p>
+                                    <ul class="actions">
+                                        <li><a href="#" class="button style1 add-to-cart" data-name="Fusil Légendaire" data-price="14.99">Ajouter au panier</a></li>
+                                    </ul>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 col-12-medium">
+                        <section class="box">
+                            <h3>Panier</h3>
+                            <ul id="cart-items"></ul>
+                            <p><strong>Total : <span id="cart-total">0.00</span>€</strong></p>
+                            <ul class="actions">
+                                <li><a href="#" class="button style3" id="checkout">Commander</a></li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <section id="footer" class="wrapper">
+            <div class="container">
+                <div id="copyright">
+                    <ul>
+                        <li>&copy; Pixel&Nerve.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Scripts -->
+    <script>
+        let cart = [];
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                let name = this.getAttribute('data-name');
+                let price = parseFloat(this.getAttribute('data-price'));
+                cart.push({ name, price });
+                updateCart();
+            });
+        });
+        
+        function updateCart() {
+            let cartList = document.getElementById('cart-items');
+            let total = 0;
+            cartList.innerHTML = '';
+            cart.forEach(item => {
+                let li = document.createElement('li');
+                li.textContent = `${item.name} - ${item.price.toFixed(2)}€`;
+                cartList.appendChild(li);
+                total += item.price;
+            });
+            document.getElementById('cart-total').textContent = total.toFixed(2);
+        }
+    </script>
+</body>
+</html>
