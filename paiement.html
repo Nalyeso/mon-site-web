@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Paiement - Day&Night</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body class="is-preload">
+    <div id="page-wrapper">
+        <section id="header" class="wrapper">
+            <div id="logo">
+                <h1><a href="index.html">Day&Night</a></h1>
+                <p>Paiement sécurisé fictif</p>
+            </div>
+        </section>
+        
+        <section id="main" class="wrapper style2">
+            <div class="title">Paiement</div>
+            <div class="container">
+                <form id="payment-form">
+                    <label>Nom sur la carte:</label>
+                    <input type="text" required>
+                    
+                    <label>Numéro de carte:</label>
+                    <input type="text" placeholder="1234 5678 9012 3456" required>
+                    
+                    <label>Date d'expiration:</label>
+                    <input type="text" placeholder="MM/YY" required>
+                    
+                    <label>CVV:</label>
+                    <input type="text" placeholder="123" required>
+                    
+                    <button type="submit" class="button style1">Payer</button>
+                </form>
+                <p id="payment-message" style="display: none; color: green;">Paiement réussi !</p>
+            </div>
+        </section>
+    </div>
+    
+    <script>
+        document.getElementById("payment-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            document.getElementById("payment-message").style.display = "block";
+        });
+    </script>
+</body>
+</html>

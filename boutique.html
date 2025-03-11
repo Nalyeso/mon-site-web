@@ -61,7 +61,7 @@
                             <ul id="cart-items"></ul>
                             <p><strong>Total : <span id="cart-total">0.00</span>€</strong></p>
                             <ul class="actions">
-                                <li><a href="#" class="button style3" id="checkout">Commander</a></li>
+                                <li><a href="paiement.html" id="checkout" class="button style3">Commander</a></li>
                             </ul>
                         </section>
                     </div>
@@ -83,7 +83,10 @@
     
     <!-- Scripts -->
     <script>
-        let cart = [];
+    let cart = []; // Définition globale du panier
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Gestion des boutons "Ajouter au panier"
         document.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', function(event) {
                 event.preventDefault();
@@ -93,7 +96,7 @@
                 updateCart();
             });
         });
-        
+
         function updateCart() {
             let cartList = document.getElementById('cart-items');
             let total = 0;
@@ -106,6 +109,23 @@
             });
             document.getElementById('cart-total').textContent = total.toFixed(2);
         }
-    </script>
+
+        // Gestion du bouton "Commander"
+        let checkoutButton = document.getElementById('checkout');
+        if (checkoutButton) {
+            checkoutButton.addEventListener('click', function(event) {
+                event.preventDefault(); // Empêche la navigation immédiate
+
+                // Sauvegarde le panier dans sessionStorage
+                sessionStorage.setItem('cart', JSON.stringify(cart));
+
+                // Redirige vers la page de paiement
+                window.location.href = 'paiement.html';
+            });
+        }
+    });
+</script>
+
+
 </body>
 </html>
