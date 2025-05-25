@@ -8,7 +8,7 @@
 </head>
 <body class="is-preload">
     <div id="page-wrapper">
-        
+
         <!-- Header -->
         <section id="header" class="wrapper">
             <div id="logo">
@@ -16,32 +16,32 @@
                 <p>Un jeu pour tout type de communauté</p>
             </div>
             <!-- Nav -->
-					<nav id="nav">
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li>
-								<a href="#">Téléchargements</a>
-								<ul>
-									<li><a href="projet.html">Projet</a></li>
-									<li><a href="pva.html">Projet version allégée</a></li>
-									<li>
-										<a href="#">Rapport de soutenance</a>
-										<ul>
-											<li><a href="soutenance1.html">Soutenance 1</a></li>
-											<li><a href="soutenance2.html">Soutenance 2</a></li>
-											<li><a href="soutenance3.html">Soutenance 3</a></li>
-										</ul>
-									</li>
-									<li><a href="dossier-justification.html">Dossier de justification</a></li>
-								</ul>
-							</li>
-							<li class="current"><a href="boutique.html">Boutique</a></li>
-							<li><a href="ressources.html">Ressources</a></li>
-							<li><a href="apropos.html">À propos</a></li>
-						</ul>
-					</nav>
+            <nav id="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li>
+                        <a href="#">Téléchargements</a>
+                        <ul>
+                            <li><a href="projet.html">Projet</a></li>
+                            <li><a href="pva.html">Projet version allégée</a></li>
+                            <li>
+                                <a href="#">Rapport de soutenance</a>
+                                <ul>
+                                    <li><a href="soutenance1.html">Soutenance 1</a></li>
+                                    <li><a href="soutenance2.html">Soutenance 2</a></li>
+                                    <li><a href="soutenance3.html">Soutenance 3</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="dossier-justification.html">Dossier de justification</a></li>
+                        </ul>
+                    </li>
+                    <li class="current"><a href="boutique.html">Boutique</a></li>
+                    <li><a href="ressources.html">Ressources</a></li>
+                    <li><a href="apropos.html">À propos</a></li>
+                </ul>
+            </nav>
         </section>
-        
+
         <!-- Boutique -->
         <section id="main" class="wrapper style2">
             <div class="title">Boutique</div>
@@ -86,7 +86,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Footer -->
         <section id="footer" class="wrapper">
             <div class="container">
@@ -98,13 +98,11 @@
             </div>
         </section>
     </div>
-    
-    <!-- Scripts -->
-    <script>
-    let cart = []; // Définition globale du panier
 
+    <!-- Script panier -->
+    <script>
+    let cart = [];
     document.addEventListener("DOMContentLoaded", function() {
-        // Gestion des boutons "Ajouter au panier"
         document.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', function(event) {
                 event.preventDefault();
@@ -114,7 +112,6 @@
                 updateCart();
             });
         });
-
         function updateCart() {
             let cartList = document.getElementById('cart-items');
             let total = 0;
@@ -127,23 +124,23 @@
             });
             document.getElementById('cart-total').textContent = total.toFixed(2);
         }
-
-        // Gestion du bouton "Commander"
         let checkoutButton = document.getElementById('checkout');
         if (checkoutButton) {
             checkoutButton.addEventListener('click', function(event) {
-                event.preventDefault(); // Empêche la navigation immédiate
-
-                // Sauvegarde le panier dans sessionStorage
+                event.preventDefault();
                 sessionStorage.setItem('cart', JSON.stringify(cart));
-
-                // Redirige vers la page de paiement
                 window.location.href = 'paiement.html';
             });
         }
     });
-</script>
+    </script>
 
-
+    <!-- Scripts nécessaires au menu -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.dropotron.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
